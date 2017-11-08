@@ -1,0 +1,36 @@
+安装 tensorflow:
+1. 安装python（Ubuntu默认2.7）
+2. 安装pip 
+	$ sudo apt-get install python-pip python-dev
+3. 安装virtualenv
+	$ sudo apt-get install python-pip python-dev python-virtualenv
+     或 $ pip install virtualenv
+4. 初始化运行环境（为了保证环境独立于其他python项目）
+	$ mkdir ~/tensorflow
+	$ virtualenv --system-site-packages ~/tensorflow
+	$ source ~/tensorflow/bin/activate
+5 下载安装tensorflow
+	(tensorflow)$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.0rc1-cp27-none-linux_x86_64.whl
+     
+    天朝禁了storage.googleapis.com（说好的道路自信呢？）替换为清华镜像：
+	(tensorflow)$ export TF_BINARY_URL=https://mirrors.tuna.tsinghua.edu.cn/tensorflow/linux/cpu/tensorflow-0.12.0rc1-cp27-none-linux_x86_64.whl
+    然后执行
+	(tensorflow)$ pip install --upgrade $TF_BINARY_URL
+	...
+6 Do your work
+	...
+7. 退出环境
+	(tensorflow)$ deactivate
+
+
+>>>>>>>>>>>  vscode 环境搭建 >>>>>>>>>>>>>>>
+
+1）安装python插件
+2）file > preference > settings 添加：
+	"python.venvPath": "/home/party/test/pythonStudy/tensorflow/bin/python",
+	"python.autoComplete.extraPaths": [
+		"/home/party/test/pythonStudy/tensorflow/lib/python2.7",
+		"/home/party/test/pythonStudy/tensorflow/lib/python2.7/site-packages"
+	]
+3）launch.json pythonPath改为：
+	 "pythonPath": "${config:python.venvPath}"（也可以直接指定为上述虚拟环境）
